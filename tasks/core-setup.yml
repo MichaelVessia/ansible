@@ -1,3 +1,10 @@
+- name: Install Python3 pexpect (needed for zsh)
+  ansible.builtin.pip:
+    name: pexpect
+  tags:
+    - install
+    - core
+
 - name: Install System Packages
   become: true
   apt:
@@ -5,6 +12,7 @@
   tags:
     - install
     - core
+
 - name: Back up .bashrc so we can revert if needed
   shell: cp ~/.bashrc ~/.bashrc_bak
   tags:

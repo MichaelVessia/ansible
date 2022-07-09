@@ -1,6 +1,15 @@
+- name: Check that the node conf exists
+  stat:
+    path: /home/michaelvessia/.npm
+  register: node_stats
+  tags:
+    - install
+    - node
+
 - name: Install nodejs and npm via n
   shell: curl -L https://bit.ly/n-install > ~/.node-installer && chmod +x ~/.node-installer && ~/.node-installer -y
   become_user: michaelvessia
+  when: node_stats.stat.exists == False
   tags:
     - install
     - node

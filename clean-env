@@ -8,7 +8,7 @@ mv ~/.bashrc_bak ~/.bashrc
 source ~/.bashrc
 
 # Undo Core Install
-sudo apt -y curl vim acl
+sudo apt -y curl vim python3-pip build-essential
 
 # Remove orphaned packages
 sudo apt -y autoremove

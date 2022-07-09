@@ -1,9 +1,16 @@
 #!/usr/bin/env bash
 
-## Install ansible
+## Install prereqs
 sudo apt-add-repository -y ppa:ansible/ansible
 sudo apt-get update -y
-sudo apt-get install -y curl git software-properties-common ansible
+sudo apt-get install -y curl git software-properties-common python3
+
+## Install pip
+sudo apt-get install -y python3-pip
+
+## Use pip to install ansible
+python3 -m pip install --user ansible
+
 
 ## pull ansible
 # sudo ansible-pull -U https://github.com/michaelvessia/ansible.git

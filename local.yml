@@ -1,4 +1,4 @@
 - hosts: localhost
   tasks:
     - include: tasks/git-setup.yml
-
+    - include: tasks/core-setup.yml

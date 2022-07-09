@@ -5,6 +5,14 @@
   tags:
     - install
     - core
+- name: Back up .bashrc so we can revert if needed
+  shell: cp ~/.bashrc ~/.bashrc_bak
+  tags:
+    - install
+    - core
+
+
+
 
 
 

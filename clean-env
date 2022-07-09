@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Undo node
+n-uninstall -y
+
+# Restore bashrc
+mv ~/.bashrc_bak ~/.bashrc
+source ~/.bashrc
+
+# Undo Core Install
+sudo apt -y curl vim acl
+
+# Remove orphaned packages
+sudo apt -y autoremove

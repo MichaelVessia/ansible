@@ -1,0 +1,6 @@
+- name: Install nodejs and npm via n
+  shell: curl -L https://bit.ly/n-install > ~/.node-installer && chmod +x ~/.node-installer && ~/.node-installer -y
+  become_user: michaelvessia
+  tags:
+    - install
+    - node

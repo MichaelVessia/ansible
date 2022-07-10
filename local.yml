@@ -20,5 +20,6 @@
     - include: tasks/node-setup.yml
     # After zsh-setup, I have to log out and in to use zsh
     - include: tasks/zsh-setup.yml
+    - include: tasks/nvim-setup.yml
 
 

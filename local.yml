@@ -16,7 +16,9 @@
     - include: tasks/ssh.yml
     - include: tasks/git-setup.yml
     - include: tasks/core-setup.yml
+    # After node-setup, I have to restart terminal to access n command
     - include: tasks/node-setup.yml
+    # After zsh-setup, I have to log out and in to use zsh
     - include: tasks/zsh-setup.yml
 
 

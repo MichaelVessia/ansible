@@ -1,3 +1,0 @@
-ansible-playbook local.yml --ask-become-pass
-
-source ~/.profile

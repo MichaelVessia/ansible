@@ -1,26 +1,26 @@
-- name: Install Python3 pexpect (needed for zsh)
-  ansible.builtin.pip:
-    name: pexpect
-  tags:
-    - install
-    - core
-
-- name: Install System Packages
+- name: Install System Packages 1 (build-essential)
   become: true
   apt:
-    name: [ "curl", "vim" ]
+    name: ["build-essential" ]
+  tags:
+    - install
+    - neovim
+    - core
+
+- name: Install System Packages 2 (unzip)
+  become: true
+  apt:
+    name: [ "unzip" ]
+  tags:
+    - install
+    - neovim
+    - core
+
+- name: Install System Packages 3 (the rest)
+  become: true
+  apt:
+    name: [ "compton", "curl", "htop", "lsof", "i3", "python3-pip", "nvidia-settings", "pavucontrol", "moreutils" ]
   tags:
     - install
     - core
-
-- name: Back up .bashrc so we can revert if needed
-  shell: cp ~/.bashrc ~/.bashrc_bak
-  tags:
-    - install
-    - core
-
-
-
-
-
 

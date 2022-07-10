@@ -20,7 +20,11 @@
     - include: tasks/node-setup.yml
     # After zsh-setup, I have to log out and in to use zsh
     - include: tasks/zsh-setup.yml
+      # May need tor run :PlugInstall and some plugin specific commands
+      # :CocInstall coc-tsserver etc
     - include: tasks/nvim-setup.yml
     - include: tasks/dotfiles.yml
-
-
+      # May have to clear and regenerate font cache via:
+      # fc-cache -f -v
+      # Or restart terminal
+    - include: tasks/fonts.yml

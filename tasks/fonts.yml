@@ -1,0 +1,26 @@
+- name: ensure fonts directory
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.local/share/fonts"
+    state: directory
+  tags:
+    - neovim
+    - fonts
+
+- name: Hack exists
+  shell: "ls {{ lookup('env', 'HOME') }}/.local/share/fonts/Hack*Nerd*Font*Complete*"
+  register: hack_exists
+  ignore_errors: yes
+  tags:
+    - neovim
+    - fonts
+
+- name: Download Hack
+  when: hack_exists is failed
+  ansible.builtin.unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
+    dest: "{{ lookup('env', 'HOME') }}/.local/share/fonts"
+    remote_src: yes
+  tags:
+    - neovim
+    - fonts
+

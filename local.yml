@@ -28,3 +28,4 @@
       # fc-cache -f -v
       # Or restart terminal
     - include: tasks/fonts.yml
+    - include: tasks/productivity.yml

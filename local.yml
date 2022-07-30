@@ -23,6 +23,9 @@
     - include: tasks/zsh-setup.yml
       # May need tor run :PlugInstall and some plugin specific commands
       # :CocInstall coc-tsserver etc
+      # Coc also seems to complain about how it was built
+      # We can fix this by going to
+      # ~/.local/share/nvim/plugged/coc.nvim and running yarn install
     - include: tasks/nvim-setup.yml
     - include: tasks/dotfiles.yml
       # May have to clear and regenerate font cache via:

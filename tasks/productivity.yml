@@ -5,3 +5,59 @@
   tags:
     - install
     - productivity
+
+- name: Check that the kitty app exists
+  stat:
+    path: /home/michaelvessia/.local/kitty.app
+  register: kitty
+  tags:
+    - install
+    - productivity
+
+- name: Install Kitty Terminal
+  shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+  tags:
+    - install
+    - productivity
+  when: kitty.stat.exists == False
+  become_user: michaelvessia
+
+- name: Symlink Kitty Binary
+  file:
+    src: /home/michaelvessia/.local/kitty.app/bin/kitty
+    dest: /home/michaelvessia/.local/bin/kitty
+    state: link
+  tags:
+    - install
+    - productivity
+
+- name: Symlink Kitty Binary
+  file:
+    src: /home/michaelvessia/.local/kitty.app/bin/kitty
+    dest: /home/michaelvessia/.local/bin/kitty
+    state: link
+  tags:
+    - install
+    - productivity
+
+- name: Place kitty.desktop file somewhere it can be found by the OS
+  copy:
+    src: /home/michaelvessia/.local/kitty.app/share/applications/kitty.desktop
+    dest: /home/michaelvessia/.local/share/applications/
+  tags:
+    - install
+    - productivity
+
+- name: Allow file manager to open text files and images in kitty
+  copy:
+    src: /home/michaelvessia/.local/kitty.app/share/applications/kitty-open.desktop
+    dest: /home/michaelvessia/.local/share/applications/
+  tags:
+    - install
+    - productivity
+
+- name: Upate paths for kitty icons
+  shell: sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop && sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
+  tags:
+    - install
+    - productivity

@@ -19,7 +19,7 @@
 - name: Install System Packages 3 (the rest)
   become: true
   apt:
-    name: [ "compton", "curl", "htop", "lsof", "i3", "python3-pip", "nvidia-settings", "pavucontrol", "moreutils", "python3-venv" ]
+    name: [ "compton", "curl", "htop", "lsof", "python3-pip", "nvidia-settings", "pavucontrol", "moreutils", "python3-venv" ]
   tags:
     - install
     - core

@@ -61,3 +61,20 @@
   tags:
     - install
     - productivity
+
+- name: Install transcrypt
+  ansible.builtin.git:
+    repo: 'git@github.com:elasticdog/transcrypt.git'
+    dest: "/home/michaelvessia/transcrypt"
+  tags:
+    - install
+    - productivity
+
+- name: Symlink transcrypt
+  ansible.builtin.file:
+    src: /home/michaelvessia/transcrypt/transcrypt
+    dest: /home/michaelvessia/.local/bin/transcrypt
+    state: link
+  tags:
+    - install
+    - productivity

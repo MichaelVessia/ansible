@@ -1,7 +1,7 @@
 - name: Install packages
   become: true
   apt:
-    name: [ "tmux", "tmuxinator", "fzf", "ripgrep", "shutter" ]
+    name: [ "tmux", "tmuxinator", "fzf", "ripgrep", "shutter", "git-crypt" ]
   tags:
     - install
     - productivity
@@ -58,23 +58,6 @@
 
 - name: Upate paths for kitty icons
   shell: sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop && sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
-  tags:
-    - install
-    - productivity
-
-- name: Install transcrypt
-  ansible.builtin.git:
-    repo: 'git@github.com:elasticdog/transcrypt.git'
-    dest: "/home/michaelvessia/transcrypt"
-  tags:
-    - install
-    - productivity
-
-- name: Symlink transcrypt
-  ansible.builtin.file:
-    src: /home/michaelvessia/transcrypt/transcrypt
-    dest: /home/michaelvessia/.local/bin/transcrypt
-    state: link
   tags:
     - install
     - productivity
